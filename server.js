@@ -143,7 +143,7 @@ app.post('/api/verify-payment', async (req, res) => {
     }
 
     // Payment is genuine — update entry status to paid
-    const { data: entry, error } = await supabase
+    const { data: entry, error } = const { data: entries, error }
       .from('entries')
       .update({
         razorpay_payment_id,
@@ -153,7 +153,7 @@ app.post('/api/verify-payment', async (req, res) => {
       })
       .eq('razorpay_order_id', razorpay_order_id)
       .select()
-      .single();
+      const entry = entries && entries[0];
 
     if (error) {
       console.error('Supabase update error:', error);
