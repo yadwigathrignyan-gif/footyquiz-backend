@@ -330,3 +330,10 @@ app.listen(PORT, () => {
   console.log(`FootyQuiz backend running on port ${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
+
+// ─── ROUTE: Get Monthly Questions ────────────────────────────────────────────
+app.get('/api/questions', (req, res) => {
+  const { getMonthlyQuestions } = require('./questions');
+  const questions = getMonthlyQuestions();
+  res.json({ questions });
+});
